@@ -41,6 +41,18 @@ CESTRING_S* CreateCEString(const char* str)
     return pCeString;
 }
 
+CESTRING_S* CreateCEStringLen(const char* str, size_t len)
+{
+    size_t strLen = 0;
+    if (str != NULL) {
+        strLen = strlen(str);
+    }
+    len = len > strLen ? strLen : len;
+    CESTRING_S* pCeString = AllocCAString(len);
+    pCeString->len = len;
+    memcpy(pCeString->data, str, sizeof(char) * len);
+    return pCeString;
+}
 
 const char* CEString2Char(const CESTRING_S* pCeString)
 {
