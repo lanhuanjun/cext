@@ -17,12 +17,12 @@ typedef struct tagCEString {
     char data[0];
 } CESTRING_S;
 
-/// 通过已有的c-style字符串构造castring。
+/// 通过已有的c-style字符串构造cestring。
 /// \param str 请确保该字符串已\0结尾。
 /// \return 申请的返回的指针将永远不为空，除非因设备内存不足，您需要手动释放(free)该内存。
 CESTRING_S* CreateCEString(const char* str);
 
-/// 通过已有的c-style字符串构造castring。
+/// 通过已有的c-style字符串构造cestring。
 /// \param str 请确保该字符串已\0结尾。
 /// \param len 传入大于str的长度则已str的长度为准，否则使用len的长度。
 /// \return 申请的返回的指针将永远不为空，除非因设备内存不足，您需要手动释放(free)该内存。
