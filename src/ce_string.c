@@ -31,14 +31,7 @@ CESTRING_S* AllocCAString(size_t size)
 
 CESTRING_S* CreateCEString(const char* str)
 {
-    size_t len = 0;
-    if (str != NULL) {
-        len = strlen(str);
-    }
-    CESTRING_S* pCeString = AllocCAString(len);
-    pCeString->len = len;
-    memcpy(pCeString->data, str, sizeof(char) * len);
-    return pCeString;
+    return CreateCEStringLen(str, UINT32_MAX);
 }
 
 CESTRING_S* CreateCEStringLen(const char* str, size_t len)
