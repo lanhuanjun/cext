@@ -1,5 +1,5 @@
 /*************************************************************
- * @author huanjun lan
+ * @author lanyeo
  * @date 2020/12/22
  * @brief
  * @history
@@ -11,26 +11,28 @@
 
 #include <stdlib.h>
 
-void ca_string_test()
+void ce_string_test()
 {
-    CASTRING_S * pCaString = CreateCAString(NULL);
-    ca_assert_eq_uint32(pCaString->buf_len, 32, "pass!", "fail");
-    ca_assert_eq_char(CAString2Char(pCaString), "", "pass!", "fail");
-    free(pCaString);
-    pCaString = CreateCAString("");
-    ca_assert_eq_uint32(pCaString->buf_len, 32, "pass!", "fail");
-    ca_assert_eq_char(CAString2Char(pCaString), "", "pass!", "fail");
-    free(pCaString);
-    pCaString = CreateCAString("12345678");
-    ca_assert_eq_uint32(pCaString->buf_len, 32,"pass!", "fail");
-    ca_assert_eq_char(CAString2Char(pCaString), "12345678", "pass!", "fail");
-    free(pCaString);
-    pCaString = CreateCAString("1234567812345678123456781234567");
-    ca_assert_eq_uint32(pCaString->buf_len, 32, "pass!", "fail");
-    ca_assert_eq_char(CAString2Char(pCaString), "1234567812345678123456781234567", "pass!", "fail");
-    free(pCaString);
-    pCaString = CreateCAString("12345678123456781234567812345678");
-    ca_assert_eq_uint32(pCaString->buf_len, 64, "pass!", "fail");
-    ca_assert_eq_char(CAString2Char(pCaString), "12345678123456781234567812345678", "pass!", "fail");
-    free(pCaString);
+    printf("start test string-------------------------\n");
+    CESTRING_S * pCeString = CreateCEString(NULL);
+    ca_assert_eq_uint32(pCeString->buf_len, 32, "pass!", "fail");
+    ca_assert_eq_char(CEString2Char(pCeString), "", "pass!", "fail");
+    free(pCeString);
+    pCeString = CreateCEString("");
+    ca_assert_eq_uint32(pCeString->buf_len, 32, "pass!", "fail");
+    ca_assert_eq_char(CEString2Char(pCeString), "", "pass!", "fail");
+    free(pCeString);
+    pCeString = CreateCEString("12345678");
+    ca_assert_eq_uint32(pCeString->buf_len, 32, "pass!", "fail");
+    ca_assert_eq_char(CEString2Char(pCeString), "12345678", "pass!", "fail");
+    free(pCeString);
+    pCeString = CreateCEString("1234567812345678123456781234567");
+    ca_assert_eq_uint32(pCeString->buf_len, 32, "pass!", "fail");
+    ca_assert_eq_char(CEString2Char(pCeString), "1234567812345678123456781234567", "pass!", "fail");
+    free(pCeString);
+    pCeString = CreateCEString("12345678123456781234567812345678");
+    ca_assert_eq_uint32(pCeString->buf_len, 64, "pass!", "fail");
+    ca_assert_eq_char(CEString2Char(pCeString), "12345678123456781234567812345678", "pass!", "fail");
+    free(pCeString);
+    printf("finish test string-------------------------\n");
 }

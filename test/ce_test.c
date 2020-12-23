@@ -1,5 +1,5 @@
 /*************************************************************
- * @author huanjun lan
+ * @author lanyeo
  * @date 2020/12/22
  * @brief
  * @history
@@ -7,8 +7,8 @@
 ************************************************************/
 
 #include "ce_test.h"
-
 int main()
 {
-    ca_string_test();
+    ce_string_test();
+    return 0;
 }
