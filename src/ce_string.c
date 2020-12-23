@@ -40,7 +40,9 @@ CESTRING_S* CreateCEStringLen(const char* str, size_t len)
     if (str != NULL) {
         strLen = strlen(str);
     }
-    len = len > strLen ? strLen : len;
+    if (strLen < len) {
+        len = strLen;
+    }
     CESTRING_S* pCeString = AllocCAString(len);
     pCeString->len = len;
     memcpy(pCeString->data, str, sizeof(char) * len);
