@@ -3,7 +3,6 @@
   <component name="ProjectModuleManager">
     <modules>
       <module fileurl="file://$PROJECT_DIR$/.idea/cext_pro.iml" filepath="$PROJECT_DIR$/.idea/cext_pro.iml" />
-      <module fileurl="file://$PROJECT_DIR$/.idea/cext_pro2.iml" filepath="$PROJECT_DIR$/.idea/cext_pro2.iml" />
     </modules>
   </component>
 </project>
