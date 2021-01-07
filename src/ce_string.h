@@ -51,6 +51,9 @@ const char* CEString2Char(const CESTRING_S* pCeString);
 /// \return
 size_t CEStringLen(const CESTRING_S* pCeString);
 
+/// clear string but not free
+void CEStringClear(CESTRING_S* pSrc);
+
 /// 将pSrc的字符串拷贝到pDest
 CESTRING_S* CEStringCpy(CESTRING_S* pDest, const CESTRING_S* pSrc);
 CESTRING_S* CEStringNCpy(CESTRING_S* pDest, const CESTRING_S* pSrc, size_t n);

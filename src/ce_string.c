@@ -93,7 +93,8 @@ int32_t CEString2Int32(const CESTRING_S *pCeStr, int *result)
     return ret;
 }
 
-int64_t CEString2Int64(const CESTRING_S *pCeStr, int *result) {
+int64_t CEString2Int64(const CESTRING_S *pCeStr, int *result)
+{
     if (pCeStr == NULL) {
         if (result != NULL) {
             *result = CESTRING_CODE_IS_NULL;
@@ -111,7 +112,8 @@ int64_t CEString2Int64(const CESTRING_S *pCeStr, int *result) {
     return ret;
 }
 
-long double CEString2LongDouble(const CESTRING_S *pCeStr, int *result) {
+long double CEString2LongDouble(const CESTRING_S *pCeStr, int *result)
+{
 
     if (pCeStr == NULL) {
         if (result != NULL) {
@@ -130,25 +132,29 @@ long double CEString2LongDouble(const CESTRING_S *pCeStr, int *result) {
     return ret;
 }
 
-CESTRING_S *CEStringCpy(CESTRING_S *pDest, const CESTRING_S *pSrc) {
+CESTRING_S *CEStringCpy(CESTRING_S *pDest, const CESTRING_S *pSrc)
+{
     if (pSrc == NULL) {
         return pDest;
     }
     return CEStringAppend(pDest, CEString2Char(pSrc));
 }
 
-CESTRING_S *CEStringNCpy(CESTRING_S *pDest, const CESTRING_S *pSrc, size_t n) {
+CESTRING_S *CEStringNCpy(CESTRING_S *pDest, const CESTRING_S *pSrc, size_t n)
+{
     if (pSrc == NULL) {
         return pDest;
     }
     return CEStringNAppend(pDest, CEString2Char(pSrc), n);
 }
 
-CESTRING_S *CEStringAppend(CESTRING_S *pDest, const char *str) {
+CESTRING_S *CEStringAppend(CESTRING_S *pDest, const char *str)
+{
     return CEStringNAppend(pDest, str, UINT32_MAX);
 }
 
-CESTRING_S *CEStringNAppend(CESTRING_S *pDest, const char *str, size_t n) {
+CESTRING_S *CEStringNAppend(CESTRING_S *pDest, const char *str, size_t n)
+{
     if (str == NULL) {
         return pDest;
     }
@@ -167,4 +173,12 @@ CESTRING_S *CEStringNAppend(CESTRING_S *pDest, const char *str, size_t n) {
     }
     memcpy(p->data + p->len, str, len * sizeof(char));
     return p;
+}
+
+void CEStringClear(CESTRING_S *pSrc)
+{
+    if (pSrc == NULL) {
+        return ;
+    }
+    memset(pSrc->data, 0, sizeof(char) * pSrc->buf_len);
 }
