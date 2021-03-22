@@ -6,8 +6,8 @@
 
 ************************************************************/
 
-#ifndef CEXT_CA_STRING_H
-#define CEXT_CA_STRING_H
+#ifndef CEXT_STRING_H
+#define CEXT_STRING_H
 
 #include <stdio.h>
 #include <stdbool.h>
@@ -23,11 +23,8 @@ enum CESTRING_CODE
     CESTRING_CODE_OVERFLOW,
 };
 
-typedef struct tagCEString {
-    uint32_t len;
-    uint32_t buf_len;
-    char data[0];
-} CESTRING_S;
+typedef void* CESTRING_S;
+
 
 /// 通过已有的c-style字符串构造cestring。
 /// \param str 请确保该字符串已\0结尾，或者为NULL。
@@ -51,12 +48,13 @@ const char* CEString2Char(const CESTRING_S* pCeString);
 /// \return
 size_t CEStringLen(const CESTRING_S* pCeString);
 
-/// clear string but not free
+/// 清空字符串，但不释放申请的内存
 void CEStringClear(CESTRING_S* pSrc);
 
 /// 将pSrc的字符串拷贝到pDest
 CESTRING_S* CEStringCpy(CESTRING_S* pDest, const CESTRING_S* pSrc);
 CESTRING_S* CEStringNCpy(CESTRING_S* pDest, const CESTRING_S* pSrc, size_t n);
+/// 将字符追加到末尾
 CESTRING_S* CEStringAppend(CESTRING_S* pDest, const char* str);
 CESTRING_S* CEStringNAppend(CESTRING_S* pDest, const char* str, size_t n);
 
@@ -99,4 +97,28 @@ int64_t CEString2Int64(const CESTRING_S* pCeStr, int* result);
 /// 4. 其他为OK
 /// \return
 long double CEString2LongDouble(const CESTRING_S* pCeStr, int* result);
-#endif //CEXT_CA_STRING_H
+
+/// 从前往后查找到第一次目标字符所在位置
+/// \param str
+/// \param ch
+/// \return 不存在则返回-1
+int32_t CEStringFindFirst(const CESTRING_S* str, char ch);
+
+/// 从后往前查找到第一次目标字符所在位置
+/// \param str
+/// \param ch
+/// \return 不存在则返回-1
+int32_t CEStringFindLast(const CESTRING_S* str, char ch);
+
+/// 从前往后查找到第一次目标字符串所在位置
+/// \param str
+/// \param ch
+/// \return 不存在则返回-1
+int32_t CEStringFindFirstStr(const CESTRING_S* str, const char* target);
+
+/// 返回index所在地址
+/// \param str
+/// \param index 值范围应该为[0, len)
+/// \return
+char* CEStringIndex(const CESTRING_S* str, uint32_t index);
+#endif //CEXT_STRING_H
